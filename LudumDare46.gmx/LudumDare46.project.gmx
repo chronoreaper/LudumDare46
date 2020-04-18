@@ -5,9 +5,76 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound"/>
-  <sprites name="sprites"/>
+  <sprites name="sprites">
+    <sprite>sprites\Logo</sprite>
+    <sprite>sprites\mouse</sprite>
+    <sprite>sprites\path</sprite>
+    <sprite>sprites\cityNode</sprite>
+    <sprite>sprites\letters</sprite>
+    <sprite>sprites\controler</sprite>
+    <sprite>sprites\selectionHitbox</sprite>
+    <sprite>sprites\soul</sprite>
+    <sprite>sprites\mouseIcon</sprite>
+    <sprite>sprites\spawnAnimation</sprite>
+    <sprite>sprites\lettersBlock</sprite>
+    <sprites name="oObjects">
+      <sprite>sprites\wall</sprite>
+      <sprite>sprites\tree</sprite>
+    </sprites>
+    <sprites name="attacks">
+      <sprite>sprites\slash</sprite>
+      <sprite>sprites\punch</sprite>
+    </sprites>
+    <sprites name="oUnit">
+      <sprite>sprites\demonLord</sprite>
+      <sprite>sprites\slime</sprite>
+      <sprite>sprites\goblin</sprite>
+      <sprite>sprites\whisp</sprite>
+      <sprite>sprites\villager</sprite>
+    </sprites>
+  </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\buildCost.gml</script>
+    <script>scripts\setMessage.gml</script>
+    <script>scripts\setLargeMessage.gml</script>
+    <script>scripts\createNewBuildOption.gml</script>
+    <script>scripts\attackScript.gml</script>
+  </scripts>
+  <objects name="objects">
+    <object>objects\oUnitSelection</object>
+    <object>objects\oControler</object>
+    <object>objects\oGameOver</object>
+    <object>objects\oSoul</object>
+    <object>objects\oSpawnAnimation</object>
+    <object>objects\oDamageText</object>
+    <object>objects\oDamage</object>
+    <objects name="attacks">
+      <object>objects\oSlash</object>
+      <object>objects\oPunch</object>
+    </objects>
+    <object>objects\oFade</object>
+    <object>objects\oUnit</object>
+    <object>objects\oAlly</object>
+    <objects name="oAlly">
+      <object>objects\oWall</object>
+      <object>objects\oTree</object>
+    </objects>
+    <object>objects\oPlayer</object>
+    <objects name="oPlayer">
+      <object>objects\oDemonLord</object>
+      <object>objects\oSlime</object>
+      <object>objects\oGoblin</object>
+    </objects>
+    <object>objects\oEnemy</object>
+    <objects name="oEnemy">
+      <object>objects\oVillager</object>
+    </objects>
+  </objects>
+  <rooms name="rooms">
+    <room>rooms\room0</room>
+  </rooms>
   <help>
     <rtf>help.rtf</rtf>
   </help>
