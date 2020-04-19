@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>event_inherited()
-combatTimer = 60*30
+combatTimer = 30*30
 </string>
           </argument>
         </arguments>
@@ -50,7 +50,7 @@ combatTimer = 60*30
           <argument>
             <kind>1</kind>
             <string>event_inherited()
-repeat(maxPow)
+repeat(ceil(maxPow*0.7))
     instance_create(x+random_range(-5,5),y+random_range(-5,5),oSoul)
 </string>
           </argument>
@@ -80,16 +80,22 @@ if atkCoolDown &lt;=0{//only perform if not attacking
     //enemy
     combatTimer--
     var inst;
-    if combatTimer &lt; 30*10
+    if combatTimer &lt; - 30*5
         inst = instance_nearest(x,y,oAlly)
     else
         inst = instance_nearest(x,y,oPlayer)
+    if aggro !=noone &amp;&amp; instance_exists(aggro)
+        inst = aggro
     if inst!=noone &amp;&amp; instance_exists(inst){
-        if distance_to_object(inst)&lt;range{
+        var dist = distance_to_object(inst)
+        if dist&lt;range{
             attackScript(point_direction(x,y,inst.x,inst.y))
+        }else if dist &lt; range * 3
+        {//else move in range
+            mp_potential_step_object(inst.x,inst.y,spd,oUnit)
         }
         //otherwise move towards the demonlord
-        if instance_exists(oDemonLord)
+        else if instance_exists(oDemonLord)
             mp_potential_step_object(oDemonLord.x,oDemonLord.y,spd,oUnit)
     }
 }

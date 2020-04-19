@@ -40,6 +40,12 @@ range = 1
 atkRate = 1
 attack = noone
 atkCoolDown = 0
+atkType = 0
+
+aggro = noone
+
+//bonus Damage
+bonusDamage = 0
 
 instance_create(x,y,oSpawnAnimation)
 </string>

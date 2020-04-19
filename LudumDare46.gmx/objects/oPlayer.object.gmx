@@ -29,13 +29,15 @@
 if atkCoolDown &lt;=0{//only perform if not attacking
     //attack any nearby enemy
     var inst = instance_nearest(x,y,oEnemy)
+    if aggro !=noone &amp;&amp; instance_exists(aggro)
+        inst = aggro
     if inst!=noone{
     var dist = distance_to_object(inst)
         if dist &lt; range
         {//if inrange attack
             attackScript(point_direction(x,y,inst.x,inst.y))
         }
-        else if dist &lt; 100
+        else if dist &lt; 50
         {//else move in range
             mp_potential_step(inst.x,inst.y,spd,true)
         }

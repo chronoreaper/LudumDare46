@@ -30,7 +30,7 @@ globalvar pixelFont,pixelBlock,pixelSquish;
 pixelFont=font_add_sprite_ext(letters,"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890.?![]()/\&lt;&gt;:-+'%|,",true,1)
 pixelBlock=font_add_sprite_ext(lettersBlock,"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890.?![]()/\&lt;&gt;:-+'%|,",true,1)
 pixelSquish=font_add_sprite_ext(lettersBlock,"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890.?![]()/\&lt;&gt;:-+'%|,",true,-1)
-gold = 20
+gold = 12
 wave = 0
 points = 0
 
@@ -47,7 +47,7 @@ holdSpace = 0
 instance_create(x + 7,y + 7,oDemonLord)
 
 //set gui
-display_set_gui_size(360,240)
+display_set_gui_size(room_width,room_height)
 
 //set mouse
 window_set_cursor(cr_none);
@@ -82,8 +82,16 @@ toBuildList = ds_list_create()
 toBuildIndex = 0
 toBuild = noone;
 ds_list_add(toBuildList,noone)
+createNewBuildOption(oWall)
 createNewBuildOption(oSlime)
 createNewBuildOption(oGoblin)
+createNewBuildOption(oWhisp)
+createNewBuildOption(oEyeBat)
+createNewBuildOption(oSpecter)
+createNewBuildOption(oCyclops)
+createNewBuildOption(oDragon)
+createNewBuildOption(oLesserDemon)
+createNewBuildOption(oBeholder)
 </string>
           </argument>
         </arguments>
@@ -127,12 +135,29 @@ waveList = ds_queue_create()
           <argument>
             <kind>1</kind>
             <string>///create random room set up
-repeat(20)
+repeat(18)
 {
 var rx = irandom(room_width/15)*15+7
 var ry = irandom(room_height/15)*15+7
 if !instance_place(rx,ry,oUnit)
     instance_create(rx,ry,oTree)
+}
+
+repeat(10)
+{
+var rx = irandom(room_width/15)*15+7
+var ry = irandom(room_height/15)*15+7
+if !instance_place(rx,ry,oUnit) &amp;&amp; ! instance_place(rx,ry,oDeco)
+    var inst = instance_create(rx,ry,oGrass);
+    inst.image_index = irandom(inst.image_number)
+}
+repeat(5)
+{
+var rx = irandom(room_width/15)*15+7
+var ry = irandom(room_height/15)*15+7
+if !instance_place(rx,ry,oUnit) &amp;&amp; ! instance_place(rx,ry,oDeco)
+    var inst = instance_create(rx,ry,oStone);
+    inst.image_index = irandom(inst.image_number)
 }
 </string>
           </argument>
@@ -166,10 +191,10 @@ if (ds_queue_size(waveList)&gt;0){
     else
         randy = irandom(room_height)
     instance_create(randx,randy,ds_queue_dequeue(waveList))
-    alarm[1] = 10
-    gold++
+    alarm[1] = max(5,30*2-(wave*5))
+    gold+=2
 }
-else alarm[0] = 30*20
+else alarm[0] = 30*(25 + min(wave*3,30))
 </string>
           </argument>
         </arguments>
@@ -194,8 +219,29 @@ else alarm[0] = 30*20
             <kind>1</kind>
             <string>///add enemy units
 wave ++
-repeat(2 + wave)
+repeat(wave)
     ds_queue_enqueue(waveList,oVillager)
+if wave&gt;2
+repeat(wave - 2)
+    ds_queue_enqueue(waveList,oArcher) 
+if wave &gt; 4
+repeat(wave - 4)
+    ds_queue_enqueue(waveList,oGuard)    
+if wave &gt; 6
+repeat(wave - 6)
+    ds_queue_enqueue(waveList,oMercenary)  
+if wave &gt; 8
+repeat(wave - 8)
+    ds_queue_enqueue(waveList,oBeserker)  
+if wave &gt; 10
+repeat(wave - 10)
+    ds_queue_enqueue(waveList,oWizard)  
+if wave &gt; 12
+repeat(wave - 12)
+    ds_queue_enqueue(waveList,oHero)  
+if wave &gt; 14
+repeat(wave - 14)
+    ds_queue_enqueue(waveList,oAngel)  
 alarm[1] = 1
 </string>
           </argument>
@@ -224,14 +270,22 @@ if !instance_exists(oGameOver) &amp;&amp; !startUp{//you havent lost yet
 if mouse_check_button_pressed(mb_right)
 {
     if toBuild !=noone
-    if !place_meeting(round((mouse_x-7)/15)*15 + 7,round((mouse_y-7)/15)*15 + 7,oUnit){
+    if !place_meeting(round((mouse_x-7)/15)*15 + 7,round((mouse_y-7)/15)*15 + 7,oUnit)
+    &amp;&amp;!place_meeting(round((mouse_x-7)/15)*15 + 7,round((mouse_y-7)/15)*15 + 7,oSummonCircle)
+    {
         var price = buildCost(toBuild)
-        if gold &gt;= price{
-            instance_create(round((mouse_x-7)/15)*15 + 7,round((mouse_y-7)/15)*15 + 7,toBuild)
+        if gold &gt;= price
+        {
+            //remove decorations
+            var deco =  instance_place(round((mouse_x-7)/15)*15 + 7,round((mouse_y-7)/15)*15 + 7,oDeco)
+            instance_destroy(deco)
             gold -=price
+            var inst = instance_create(round((mouse_x-7)/15)*15 + 7,round((mouse_y-7)/15)*15 + 7,oSummonCircle);
+            inst.toCreate = toBuild
+            inst.image_speed = min(0.1,((wave+1)/2/price))
         }
         else setMessage("Not ENough Souls")
-    }else setMessage("CaN't Build Here")
+    }else setMessage("CaN't SummoN Here")
 
 }
 
@@ -395,13 +449,19 @@ if inst !=noone{
 }
 else{
 //draw over unit
-inst = instance_place(mouse_x,mouse_y,oUnit);
+inst = instance_place(round((mouse_x-7)/15)*15 + 7,round((mouse_y-7)/15)*15 + 7,oUnit);
 if inst!=noone{
     draw_set_colour(c_white)
     draw_set_halign(fa_left)
     draw_set_font(pixelBlock)
     draw_text(mouse_x+10,mouse_y,string_upper(sprite_get_name(inst.sprite_index)))
+    if toBuildIndex !=0
+        sprite_index = cannotplace
 }
+else if place_meeting(round((mouse_x-7)/15)*15 + 7,round((mouse_y-7)/15)*15 + 7,oSummonCircle)
+    sprite_index = cannotplace
+else
+    sprite_index = controler
 }
 </string>
           </argument>
@@ -510,6 +570,7 @@ if startUp{
           <argument>
             <kind>1</kind>
             <string>///draw stats
+if !instance_exists(oGameOver){
 if !startUp{
 draw_set_alpha(1)
 draw_set_colour(c_aqua)
@@ -524,9 +585,10 @@ if (alarm_get(0) &gt; 0)
     draw_text(5,35,"Next Wave: "+string(floor(alarm_get(0)/30)))
 else
     draw_text(5,35,"Next Wave: Now")
-}
 
-draw_text(5,room_height-50,"Build SelectioN")
+draw_text(5,room_height-50,"SummoN SelectioN")
+}
+}
 </string>
           </argument>
         </arguments>
@@ -548,10 +610,22 @@ draw_text(5,room_height-50,"Build SelectioN")
           <argument>
             <kind>1</kind>
             <string>///draw_mouse_controls
+if !instance_exists(oGameOver)
 if !startUp{
 draw_sprite(mouseIcon,0,view_wview-15,15)
 draw_sprite(mouseIcon,1,view_wview-15,30)
 draw_sprite(mouseIcon,2,view_wview-15,45)
+draw_set_halign(fa_right)
+draw_set_font(pixelBlock)
+draw_set_colour(c_white)
+draw_set_alpha(1)
+draw_text(view_wview-20,25,"Change Summon Selection")
+if toBuild == noone
+    draw_text(view_wview-20,10,"Select a summon on the bottom left")
+else{
+    draw_text(view_wview-20,10,"Cancel Summon")
+    draw_text(view_wview-20,40,"Summon")
+}
 }
 </string>
           </argument>

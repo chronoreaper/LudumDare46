@@ -27,9 +27,9 @@
             <kind>1</kind>
             <string>event_inherited()
 team = 0
-pow = 2
+pow = 4
 maxPow = pow
-spd = 1
+spd = 0.7
 
 range = 7
 attack = oSlash

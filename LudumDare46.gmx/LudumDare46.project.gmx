@@ -12,25 +12,52 @@
     <sprite>sprites\cityNode</sprite>
     <sprite>sprites\letters</sprite>
     <sprite>sprites\controler</sprite>
+    <sprite>sprites\cannotplace</sprite>
     <sprite>sprites\selectionHitbox</sprite>
     <sprite>sprites\soul</sprite>
     <sprite>sprites\mouseIcon</sprite>
+    <sprite>sprites\summonCircle</sprite>
     <sprite>sprites\spawnAnimation</sprite>
     <sprite>sprites\lettersBlock</sprite>
     <sprites name="oObjects">
       <sprite>sprites\wall</sprite>
       <sprite>sprites\tree</sprite>
+      <sprite>sprites\grass</sprite>
+      <sprite>sprites\stone</sprite>
     </sprites>
     <sprites name="attacks">
+      <sprite>sprites\light</sprite>
+      <sprite>sprites\explosion</sprite>
+      <sprite>sprites\wideslash</sprite>
       <sprite>sprites\slash</sprite>
+      <sprite>sprites\stab</sprite>
       <sprite>sprites\punch</sprite>
+      <sprite>sprites\smash</sprite>
+      <sprite>sprites\breath</sprite>
+      <sprite>sprites\arrow</sprite>
+      <sprite>sprites\fire</sprite>
+      <sprite>sprites\willowisp</sprite>
     </sprites>
     <sprites name="oUnit">
-      <sprite>sprites\demonLord</sprite>
       <sprite>sprites\slime</sprite>
       <sprite>sprites\goblin</sprite>
       <sprite>sprites\whisp</sprite>
+      <sprite>sprites\eyebat</sprite>
+      <sprite>sprites\specter</sprite>
+      <sprite>sprites\kobold</sprite>
+      <sprite>sprites\cyclops</sprite>
+      <sprite>sprites\dragon</sprite>
+      <sprite>sprites\lesserdemon</sprite>
+      <sprite>sprites\beholder</sprite>
+      <sprite>sprites\demonLord</sprite>
       <sprite>sprites\villager</sprite>
+      <sprite>sprites\archer</sprite>
+      <sprite>sprites\guard</sprite>
+      <sprite>sprites\mercenary</sprite>
+      <sprite>sprites\berserker</sprite>
+      <sprite>sprites\wizard</sprite>
+      <sprite>sprites\hero</sprite>
+      <sprite>sprites\angel</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background"/>
@@ -48,11 +75,26 @@
     <object>objects\oGameOver</object>
     <object>objects\oSoul</object>
     <object>objects\oSpawnAnimation</object>
+    <object>objects\oSummonCircle</object>
+    <object>objects\oDeco</object>
+    <objects name="decorations">
+      <object>objects\oGrass</object>
+      <object>objects\oStone</object>
+    </objects>
     <object>objects\oDamageText</object>
     <object>objects\oDamage</object>
     <objects name="attacks">
       <object>objects\oSlash</object>
       <object>objects\oPunch</object>
+      <object>objects\oWillOWisp</object>
+      <object>objects\oStab</object>
+      <object>objects\oArrow</object>
+      <object>objects\oLight</object>
+      <object>objects\oExplosion</object>
+      <object>objects\oWideSlash</object>
+      <object>objects\oSmash</object>
+      <object>objects\oBreath</object>
+      <object>objects\oFire</object>
     </objects>
     <object>objects\oFade</object>
     <object>objects\oUnit</object>
@@ -66,10 +108,24 @@
       <object>objects\oDemonLord</object>
       <object>objects\oSlime</object>
       <object>objects\oGoblin</object>
+      <object>objects\oWhisp</object>
+      <object>objects\oEyeBat</object>
+      <object>objects\oSpecter</object>
+      <object>objects\oCyclops</object>
+      <object>objects\oDragon</object>
+      <object>objects\oLesserDemon</object>
+      <object>objects\oBeholder</object>
     </objects>
     <object>objects\oEnemy</object>
     <objects name="oEnemy">
       <object>objects\oVillager</object>
+      <object>objects\oArcher</object>
+      <object>objects\oGuard</object>
+      <object>objects\oMercenary</object>
+      <object>objects\oBeserker</object>
+      <object>objects\oWizard</object>
+      <object>objects\oHero</object>
+      <object>objects\oAngel</object>
     </objects>
   </objects>
   <rooms name="rooms">
