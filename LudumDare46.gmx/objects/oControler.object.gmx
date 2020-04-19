@@ -669,21 +669,21 @@ draw_text(5,room_height-50,"SummoN SelectioN")
 if !instance_exists(oGameOver)
 if !startUp{
 draw_sprite(mouseIcon,0,view_wview-15,15)
-draw_sprite(mouseIcon,1,view_wview-15,30)
-draw_sprite(mouseIcon,2,view_wview-15,45)
-draw_sprite(oSpacebar,0,view_wview-15,60)
+//draw_sprite(mouseIcon,1,view_wview-15,30)
+draw_sprite(mouseIcon,2,view_wview-15,30)
+draw_sprite(oSpacebar,0,view_wview-15,45)
 draw_set_halign(fa_right)
 draw_set_font(pixelBlock)
 draw_set_colour(c_white)
 draw_set_alpha(1)
-draw_text(view_wview-20,25,"Change Summon Selection")
+//draw_text(view_wview-20,25,"Change Summon Selection")
 if toBuild == noone
     draw_text(view_wview-20,10,"Select a summon on the bottom")
 else{
     draw_text(view_wview-20,10,"Cancel Summon")
-    draw_text(view_wview-20,40,"Summon")
+    draw_text(view_wview-20,25,"Summon")
 }
-    draw_text(view_wview-20,55,"Skip to Next wave")
+    draw_text(view_wview-20,40,"Skip to Next wave")
 }
 </string>
           </argument>
