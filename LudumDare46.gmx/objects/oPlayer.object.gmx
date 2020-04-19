@@ -37,13 +37,13 @@ if atkCoolDown &lt;=0{//only perform if not attacking
         {//if inrange attack
             attackScript(point_direction(x,y,inst.x,inst.y))
         }
-        else if dist &lt; 50
+        else if dist &lt; 80
         {//else move in range
-            mp_potential_step(inst.x,inst.y,spd,true)
+            mp_potential_step_object(inst.x,inst.y,spd,oUnit)
         }
         else
         {//move back into starting position
-            mp_potential_step(xstart,ystart,spd,true)
+            mp_potential_step_object(xstart,ystart,spd,oUnit)
         }
     }
     else{//move back into starting position

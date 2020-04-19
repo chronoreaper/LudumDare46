@@ -31,7 +31,7 @@ pow = 10
 maxPow = pow
 spd = 0.3
 
-range = 25
+range = 27
 attack = oWillOWisp
 atkRate = 0.7
 atkType = 1

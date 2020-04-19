@@ -27,13 +27,13 @@
             <kind>1</kind>
             <string>event_inherited()
 team = 0
-pow = 85
+pow = 88
 maxPow = pow
 spd = 0.3
 
-range = 70
+range = 80
 attack = oFire
-atkRate = 0.4
+atkRate = 0.6
 atkType = 1
 
 bonusDamage = 3

@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>event_inherited()
 team = 0
-pow = 35
+pow = 34
 maxPow = pow
 spd = 0.3
 

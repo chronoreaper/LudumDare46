@@ -4,9 +4,28 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sound>sound\sNextWave</sound>
+    <sound>sound\sHit</sound>
+    <sound>sound\sExplosion</sound>
+    <sound>sound\sShoot2</sound>
+    <sound>sound\sShootEnergy</sound>
+    <sound>sound\sShootFire</sound>
+    <sound>sound\sSlash</sound>
+    <sound>sound\sSmash</sound>
+    <sound>sound\sGameOver</sound>
+    <sound>sound\sSummonComplete1</sound>
+    <sound>sound\sSummonComplete2</sound>
+    <sound>sound\sSummon</sound>
+    <sound>sound\sError</sound>
+    <sound>sound\sCollect</sound>
+    <sound>sound\sThunder</sound>
+    <sound>sound\sMenu</sound>
+    <sound>sound\sGameSong</sound>
+  </sounds>
   <sprites name="sprites">
     <sprite>sprites\Logo</sprite>
+    <sprite>sprites\oSpacebar</sprite>
     <sprite>sprites\mouse</sprite>
     <sprite>sprites\path</sprite>
     <sprite>sprites\cityNode</sprite>
@@ -21,11 +40,15 @@
     <sprite>sprites\lettersBlock</sprite>
     <sprites name="oObjects">
       <sprite>sprites\wall</sprite>
+      <sprite>sprites\blade</sprite>
+      <sprite>sprites\tower</sprite>
       <sprite>sprites\tree</sprite>
       <sprite>sprites\grass</sprite>
       <sprite>sprites\stone</sprite>
     </sprites>
     <sprites name="attacks">
+      <sprite>sprites\thunder</sprite>
+      <sprite>sprites\spinslash</sprite>
       <sprite>sprites\light</sprite>
       <sprite>sprites\explosion</sprite>
       <sprite>sprites\wideslash</sprite>
@@ -36,6 +59,7 @@
       <sprite>sprites\breath</sprite>
       <sprite>sprites\arrow</sprite>
       <sprite>sprites\fire</sprite>
+      <sprite>sprites\fire2</sprite>
       <sprite>sprites\willowisp</sprite>
     </sprites>
     <sprites name="oUnit">
@@ -50,6 +74,7 @@
       <sprite>sprites\lesserdemon</sprite>
       <sprite>sprites\beholder</sprite>
       <sprite>sprites\demonLord</sprite>
+      <sprite>sprites\icon</sprite>
       <sprite>sprites\villager</sprite>
       <sprite>sprites\archer</sprite>
       <sprite>sprites\guard</sprite>
@@ -95,12 +120,17 @@
       <object>objects\oSmash</object>
       <object>objects\oBreath</object>
       <object>objects\oFire</object>
+      <object>objects\oFire2</object>
+      <object>objects\oSpinSlash</object>
+      <object>objects\oThunder</object>
     </objects>
     <object>objects\oFade</object>
     <object>objects\oUnit</object>
     <object>objects\oAlly</object>
     <objects name="oAlly">
       <object>objects\oWall</object>
+      <object>objects\oBlade</object>
+      <object>objects\oTower</object>
       <object>objects\oTree</object>
     </objects>
     <object>objects\oPlayer</object>

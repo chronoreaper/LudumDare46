@@ -56,6 +56,8 @@ if speed = 0{
     //if not a projectial
     if image_index = 1{
         var inst = instance_place(x,y,oUnit)
+        if inst!=noone
+            audio_play_sound(sHit,60,false)
         while (inst != noone){
             if inst.team !=team{
                 //calculate damage
@@ -63,6 +65,8 @@ if speed = 0{
                 var dmg = instance_create(inst.x,inst.y - 20,oDamageText);
                 dmg.text = attack
                 inst.aggro = source
+                if inst.object_index = oDemonLord
+                    oControler.redFade = 1
             }
             instance_deactivate_object(inst)
             inst = instance_place(x,y,oUnit)
@@ -80,6 +84,9 @@ var inst = instance_place(x,y,oUnit)
             var dmg = instance_create(inst.x,inst.y - 20,oDamageText);
             dmg.text = attack
             instance_destroy()
+            audio_play_sound(sHit,60,false)
+            if inst.object_index = oDemonLord
+                    oControler.redFade = 1
         }
     }
 }

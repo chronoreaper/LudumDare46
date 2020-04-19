@@ -177,7 +177,9 @@ draw_sprite_ext(sprite_index,image_index,x+ax,y+ay,1,1,0,-1,1)
 //draw_the hp bar
 draw_set_font(pixelSquish)
 draw_set_halign(fa_center)
-if team = 0
+if object_index = oDemonLord
+    draw_set_colour(c_orange)
+else if team = 0
     draw_set_colour(c_white)
 else if team = 1
     draw_set_colour(c_red)

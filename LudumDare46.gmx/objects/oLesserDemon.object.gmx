@@ -31,9 +31,9 @@ pow = 66
 maxPow = pow
 spd = 1
 
-range = 50
+range = 20
 attack = oFire
-atkRate = 1.2
+atkRate = 1.5
 atkType = 1
 </string>
           </argument>

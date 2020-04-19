@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>event_inherited()
-combatTimer = 30*30
+combatTimer = 30*20
 </string>
           </argument>
         </arguments>
@@ -50,7 +50,7 @@ combatTimer = 30*30
           <argument>
             <kind>1</kind>
             <string>event_inherited()
-repeat(ceil(maxPow*0.7))
+repeat(ceil(maxPow*0.9))
     instance_create(x+random_range(-5,5),y+random_range(-5,5),oSoul)
 </string>
           </argument>
@@ -80,7 +80,7 @@ if atkCoolDown &lt;=0{//only perform if not attacking
     //enemy
     combatTimer--
     var inst;
-    if combatTimer &lt; - 30*5
+    if combatTimer &lt; - 30*3
         inst = instance_nearest(x,y,oAlly)
     else
         inst = instance_nearest(x,y,oPlayer)

@@ -52,6 +52,7 @@ image_speed = 0.1
             <string>instance_destroy()
 if toCreate !=noone
     instance_create(x,y,toCreate)
+audio_play_sound(sSummonComplete2,50,false)
 </string>
           </argument>
         </arguments>

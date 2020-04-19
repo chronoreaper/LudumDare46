@@ -51,8 +51,10 @@
             <string>///draw a fading sprite
 draw_sprite_ext(sprite_index,0,x,y,1,1,0,-1,alpha)
 alpha -=0.05
-if alpha &lt; 0
+if alpha &lt; 0{
     instance_destroy()
+    oControler.gold++
+    }
 </string>
           </argument>
         </arguments>
